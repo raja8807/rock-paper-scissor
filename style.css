@@ -1,0 +1,23 @@
+*{
+				box-sizing: border-box;
+}
+
+.box{
+				height: 300px;
+				width: 300px;
+				border: 2px solid black;
+}
+
+.top, .bottom{
+				border: 2px solid red;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				height: 50%;
+}
+
+
+.btn{
+				height: 100%;
+				width: 30%;
+}
