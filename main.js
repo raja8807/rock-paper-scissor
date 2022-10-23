@@ -1,22 +1,30 @@
 let btns = document.querySelectorAll(".btn")
 
-let playerOut = document.getElementById("playerOut")
-let compOut = document.getElementById("compOut")
+const result = document.getElementById('result')
+
 
 let player = document.querySelector(".player")
 let comp = document.querySelector(".comp")
-
 let options = ["Rock","Paper","Scissor"]
+
+var playerScore = 0;
+var compScore = 0;
+
+const playerScoreOut = document.getElementById('playerScore')
+
+const compScoreOut = document.getElementById('compScore')
+
 
 function play(choice){
 				
 								player.choose = choice;
-								playerOut.innerText = player.choose
+								
+								player.style.backgroundImage = "url('./assets/images/"+player.choose+".png')"
 								
 								let rand = Math.floor(Math.random()*3)
 							
 								comp.choose = options[rand]
-								compOut.innerText=comp.choose
+								comp.style.backgroundImage = "url('./assets/images/"+comp.choose+".png')"
 	
 								chkWin()
 }
@@ -24,32 +32,41 @@ function play(choice){
 
 function chkWin(){
 				if (comp.choose === player.choose) {
-								alert("draw")
+							result.innerText =	"Draw"
 				}else if (player.choose === "Rock"){
 								if (comp.choose === "Scissor") {
-												alert("Player Win")
+												result.innerText =	"Player Win"
+												playerScore += 1;
 								}else {
-												alert("Comp Win")
+												result.innerText =	"Comp Win"
+												compScore += 1;
 								}
 				}else if (player.choose === "Scissor") {
 								if (comp.choose === "Paper") {
-												alert("Player Win")
+												result.innerText =	"Player Win"
+												playerScore += 1;
 								}else {
-												alert("Comp Win")
+												result.innerText =	"Comp Win"
+												compScore += 1;
 								}
 				}else if (player.choose === "Paper") {
 								if (comp.choose === "Rock") {
-												alert("Player Win")
+												result.innerText =	"Player Win"
+												playerScore += 1;
 								}else {
-								alert("Comp Win")
+								result.innerText =	"Comp Win"
+								compScore += 1;
 								}
 				}
+				playerScoreOut.innerText = playerScore
+				compScoreOut.innerText = compScore
 }
 
 btns.forEach((btn)=>{
 
-				btn.choice = btn.innerText
-				
+				btn.choice = btn.id
+				btn.style.backgroundImage = "url('./assets/images/"+btn.choice+".png')"
+			
 				btn.addEventListener("click" , ()=>{
 								play(btn.choice);
 				})												
